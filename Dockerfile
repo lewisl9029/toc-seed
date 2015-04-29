@@ -1,3 +1,4 @@
+FROM ubuntu:14.04.2
 
 MAINTAINER Lewis Liu
 
@@ -28,4 +29,3 @@ RUN n 0.10.36
 EXPOSE 42424
 
 CMD ["node", "seed.js"]
-
