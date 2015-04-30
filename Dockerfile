@@ -27,5 +27,6 @@ RUN n 0.10.36
 
 # Expose telehash seed server port
 EXPOSE 42424
+EXPOSE 42424/udp
 
 CMD ["node", "seed.js"]
