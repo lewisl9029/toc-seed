@@ -20,21 +20,8 @@ if(argv.port == 42420)
 }
 
 // localize our id file
-//EDIT: reading from env var rather than file when available
-// argv.id = (argv.id) ? path.resolve(argv.id) : path.join(path.homedir(),".seed.json");
-// if(argv.seeds) argv.seeds = path.resolve(argv.seeds);
-
-if (process.env.TOC_SEED_KEYPAIR) {
-  argv.id = JSON.parse(process.env.TOC_SEED_KEYPAIR);
-} else {
-  argv.id = (argv.id) ? path.resolve(argv.id) : path.join(path.homedir(),".seed.json");
-}
-
-if (process.env.TOC_SEED_SEEDS) {
-  argv.seeds = JSON.parse(process.env.TOC_SEED_SEEDS);
-} else {
-  if(argv.seeds) argv.seeds = path.resolve(argv.seeds);
-}
+argv.id = (argv.id) ? path.resolve(argv.id) : path.join(path.homedir(),".seed.json");
+if(argv.seeds) argv.seeds = path.resolve(argv.seeds);
 
 tele.init(argv, function(err, seed){
   if(!seed) return console.log("something went wrong :(",err) || process.exit(1);

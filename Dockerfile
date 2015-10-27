@@ -10,9 +10,6 @@ COPY telehash-v2 telehash-v2
 EXPOSE 42424
 EXPOSE 42424/udp
 
-# Use env var TOC_SEED_KEYPAIR to specify keypair
-# Use env var TOC_SEED_SEEDS to specify seeds
-
-# Mount this as a volume to generate a new keypair and save it to keypair.json
+# Mount this as a volume to provide an existing keypair or generate a new one
 VOLUME /toc-seed/config
 CMD [ "node", "telehash-v2/seed.js", "--id", "/toc-seed/config/keypair.json" ]
