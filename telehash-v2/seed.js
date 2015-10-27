@@ -20,13 +20,26 @@ if(argv.port == 42420)
 }
 
 // localize our id file
-argv.id = (argv.id) ? path.resolve(argv.id) : path.join(path.homedir(),".seed.json");
-if(argv.seeds) argv.seeds = path.resolve(argv.seeds);
+//EDIT: reading from env var rather than file when available
+// argv.id = (argv.id) ? path.resolve(argv.id) : path.join(path.homedir(),".seed.json");
+// if(argv.seeds) argv.seeds = path.resolve(argv.seeds);
+
+if (process.env.TOC_TELEHASH_KEYPAIR) {
+  argv.id = JSON.parse(process.env.TOC_TELEHASH_KEYPAIR);
+} else {
+  argv.id = (argv.id) ? path.resolve(argv.id) : path.join(path.homedir(),".seed.json");
+}
+
+if (process.env.TOC_TELEHASH_SEEDS) {
+  argv.seeds = JSON.parse(process.env.TOC_TELEHASH_SEEDS);
+} else {
+  if(argv.seeds) argv.seeds = path.resolve(argv.seeds);
+}
 
 tele.init(argv, function(err, seed){
   if(!seed) return console.log("something went wrong :(",err) || process.exit(1);
   var info = {paths:seed.paths, parts:seed.parts, keys:seed.keys};
-  
+
   var seeds = {};
   seeds[seed.hashname] = info;
   console.log(JSON.stringify(seeds,null,2));
