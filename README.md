@@ -1,1 +1,1 @@
-# toc-seed
+# Seed Server for Toc Messenger
