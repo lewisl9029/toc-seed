@@ -12,9 +12,9 @@ EXPOSE 42424/udp
 
 VOLUME /toc-seed/config
 
-CMD [
-  "node",
-  "telehash-v2/seed.js",
-  "--id /toc-seed/config/id.json",
-  "--seeds /toc-seed/config/seeds.json"
+CMD [ \
+  "node", \
+  "telehash-v2/seed.js", \
+  "--id /toc-seed/config/id.json", \
+  "--seeds /toc-seed/config/seeds.json" \
 ]
