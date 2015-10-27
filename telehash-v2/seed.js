@@ -24,14 +24,14 @@ if(argv.port == 42420)
 // argv.id = (argv.id) ? path.resolve(argv.id) : path.join(path.homedir(),".seed.json");
 // if(argv.seeds) argv.seeds = path.resolve(argv.seeds);
 
-if (process.env.TOC_TELEHASH_KEYPAIR) {
-  argv.id = JSON.parse(process.env.TOC_TELEHASH_KEYPAIR);
+if (process.env.TOC_SEED_KEYPAIR) {
+  argv.id = JSON.parse(process.env.TOC_SEED_KEYPAIR);
 } else {
   argv.id = (argv.id) ? path.resolve(argv.id) : path.join(path.homedir(),".seed.json");
 }
 
-if (process.env.TOC_TELEHASH_SEEDS) {
-  argv.seeds = JSON.parse(process.env.TOC_TELEHASH_SEEDS);
+if (process.env.TOC_SEED_SEEDS) {
+  argv.seeds = JSON.parse(process.env.TOC_SEED_SEEDS);
 } else {
   if(argv.seeds) argv.seeds = path.resolve(argv.seeds);
 }
